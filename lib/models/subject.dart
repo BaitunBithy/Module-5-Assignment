@@ -7,9 +7,9 @@ class Subject {
   final double _mark;
 
   Subject({required this.name, required double mark})
-      : id = '${DateTime.now().microsecondsSinceEpoch}_$name',
-        // ignore: prefer_initializing_formals
-        _mark = mark;
+    : id = '${DateTime.now().microsecondsSinceEpoch}_$name',
+      // ignore: prefer_initializing_formals
+      _mark = mark;
 
   double get mark => _mark;
 

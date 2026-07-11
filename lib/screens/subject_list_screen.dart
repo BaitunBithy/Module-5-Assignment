@@ -63,12 +63,10 @@ class SubjectListScreen extends StatelessWidget {
               ),
               onDismissed: (_) {
                 final name = subject.name;
-                context
-                    .read<SubjectProvider>()
-                    .removeSubjectById(subject.id);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('$name removed')),
-                );
+                context.read<SubjectProvider>().removeSubjectById(subject.id);
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text('$name removed')));
               },
               child: Card(
                 margin: const EdgeInsets.symmetric(vertical: 6),
@@ -84,8 +82,7 @@ class SubjectListScreen extends StatelessWidget {
                     ),
                   ),
                   title: Text(subject.name),
-                  subtitle:
-                      Text('Mark: ${subject.mark.toStringAsFixed(1)}'),
+                  subtitle: Text('Mark: ${subject.mark.toStringAsFixed(1)}'),
                 ),
               ),
             );
