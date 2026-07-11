@@ -1,7 +1,7 @@
 name: flutter_app_1
-description: "A new Flutter project."
+description: "Student Grade Tracker - add subjects, view marks and grades, see a live summary."
 publish_to: 'none'
-version: 0.1.0+1
+version: 1.0.0+1
 
 environment:
   sdk: ^3.12.2
@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

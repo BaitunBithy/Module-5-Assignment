@@ -8,6 +8,7 @@ import 'theme/app_themes.dart';
 import 'screens/add_subject_screen.dart';
 import 'screens/subject_list_screen.dart';
 import 'screens/summary_screen.dart';
+import 'widgets/theme_toggle_action.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +45,7 @@ class HomeShell extends StatelessWidget {
   const HomeShell({super.key});
 
   static const _screens = [
-    AddSubjectScreenWrapper(),
+    AddSubjectScreen(),
     SubjectListScreen(),
     SummaryScreen(),
   ];
@@ -56,6 +57,10 @@ class HomeShell extends StatelessWidget {
     return Consumer<NavigationProvider>(
       builder: (context, navProvider, _) {
         return Scaffold(
+          appBar: AppBar(
+            title: Text(_titles[navProvider.currentIndex]),
+            actions: const [ThemeToggleAction()],
+          ),
           body: IndexedStack(
             index: navProvider.currentIndex,
             children: _screens,
@@ -81,16 +86,5 @@ class HomeShell extends StatelessWidget {
         );
       },
     );
-  }
-}
-
-/// Wraps AddSubjectScreen so it can carry a theme toggle in its own AppBar
-/// without each screen needing to duplicate the shell scaffold.
-class AddSubjectScreenWrapper extends StatelessWidget {
-  const AddSubjectScreenWrapper({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AddSubjectScreen();
   }
 }

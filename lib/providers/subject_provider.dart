@@ -13,9 +13,12 @@ class SubjectProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removeSubjectAt(int index) {
-    _subjects.removeAt(index);
-    notifyListeners();
+  void removeSubjectById(String id) {
+    final initialLength = _subjects.length;
+    _subjects.removeWhere((subject) => subject.id == id);
+    if (_subjects.length != initialLength) {
+      notifyListeners();
+    }
   }
 
   // Requirement: use .where() to filter passing subjects (grade != F)
